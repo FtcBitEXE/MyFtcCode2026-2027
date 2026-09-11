@@ -16,7 +16,6 @@ public class TestBotOpModeGamepad extends LinearOpMode {
 
     private DriveTrain driveTrain;
 
-    private Gamepad player1 = new Gamepad();
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -36,24 +35,30 @@ public class TestBotOpModeGamepad extends LinearOpMode {
         waitForStart();
         resetRuntime();
 
-
+        
         while (opModeIsActive()) {
-            if (player1.left_stick_y >= 0.1) {
+            if (gamepad1.left_stick_y >= 0.1) {
                 driveTrain.drivePwrBased(1, 0.8);
-            } else if (player1.left_stick_y <= 0) {
+            } else if (gamepad1.left_stick_y <= -0.1) {
                 driveTrain.drivePwrBased(2, 0.8);
-            } else if (player1.left_stick_x <= 0) {
+            } else if (gamepad1.left_stick_x <= -0.1) {
                 driveTrain.drivePwrBased(3, 0.8);
-            } else if (player1.left_stick_x >= 0.1) {
+            } else if (gamepad1.left_stick_x >= 0.1) {
                 driveTrain.drivePwrBased(4, 0.8);
+            } else  {
+                driveTrain.drivePwrBased(1, 0);
             }
+            
 
 
-            if (player1.right_stick_y >= 0.1) {
+            if (gamepad1.right_stick_y >= 0.1) {
                 driveTrain.RotatePwrBased(false, 0.8);
-            } else if (player1.right_stick_y <= 0) {
+            } else if (gamepad1.right_stick_y <= -0.1) {
                 driveTrain.RotatePwrBased(true, 0.8);
+            } else  {
+                driveTrain.drivePwrBased(1, 0);
             }
+                
         }
     }
 }
