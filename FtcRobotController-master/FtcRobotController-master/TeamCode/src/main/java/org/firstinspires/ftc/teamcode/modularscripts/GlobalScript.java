@@ -5,13 +5,13 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 public class GlobalScript {
 
-    public DcMotorEx FrontLeft;
+    public static DcMotorEx FrontLeft;
 
-    public DcMotorEx FrontRight;
+    public static DcMotorEx FrontRight;
 
-    public DcMotorEx BackLeft;
+    public static DcMotorEx BackLeft;
 
-    public DcMotorEx BackRight;
+    public static DcMotorEx BackRight;
 
 
 
