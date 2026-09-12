@@ -8,6 +8,7 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 
 import org.firstinspires.ftc.teamcode.modularscripts.DriveTrain;
 import org.firstinspires.ftc.teamcode.modularscripts.GlobalScript;
+import org.firstinspires.ftc.teamcode.modularscripts.MotorScript;
 
 @TeleOp
 public class TestBotOpModeGamepad extends LinearOpMode {
@@ -16,9 +17,15 @@ public class TestBotOpModeGamepad extends LinearOpMode {
 
     private DriveTrain driveTrain;
 
+    private MotorScript motorScript;
+
+    private DcMotorEx testMotor;
+
 
     @Override
     public void runOpMode() throws InterruptedException {
+
+        testMotor = hardwareMap.get(DcMotorEx.class, "ball_rotation_wheel");
 
         global.FrontLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
 
@@ -30,6 +37,8 @@ public class TestBotOpModeGamepad extends LinearOpMode {
 
         global.FrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
         global.BackRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        
+        //driveTrain.posBasedMovementInit();
 
 
         waitForStart();
@@ -37,28 +46,11 @@ public class TestBotOpModeGamepad extends LinearOpMode {
 
         
         while (opModeIsActive()) {
-            if (gamepad1.left_stick_y >= 0.1) {
-                driveTrain.drivePwrBased(1, 0.8);
-            } else if (gamepad1.left_stick_y <= -0.1) {
-                driveTrain.drivePwrBased(2, 0.8);
-            } else if (gamepad1.left_stick_x <= -0.1) {
-                driveTrain.drivePwrBased(3, 0.8);
-            } else if (gamepad1.left_stick_x >= 0.1) {
-                driveTrain.drivePwrBased(4, 0.8);
-            } else  {
-                driveTrain.drivePwrBased(1, 0);
-            }
-            
-
-
-            if (gamepad1.right_stick_y >= 0.1) {
-                driveTrain.RotatePwrBased(false, 0.8);
-            } else if (gamepad1.right_stick_y <= -0.1) {
-                driveTrain.RotatePwrBased(true, 0.8);
-            } else  {
-                driveTrain.drivePwrBased(1, 0);
-            }
-                
+            telemetry.addData("Y"+-gamepad1.left_stick_y+"X"+gamepad1.left_stick_x+"RX"+gamepad1.right_stick_x, "okay");
+            telemetry.update();
+            driveTrain.driveTeleOp(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+            motorScript.ControlMotorPwrBased(testMotor, 1, gamepad1.left_bumper);
+            motorScript.ControlMotorPwrBased(testMotor, -1, gamepad1.right_bumper);
         }
     }
 }

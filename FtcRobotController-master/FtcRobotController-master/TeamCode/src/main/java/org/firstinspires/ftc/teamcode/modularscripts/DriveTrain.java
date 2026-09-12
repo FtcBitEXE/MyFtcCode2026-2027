@@ -15,7 +15,6 @@ public class DriveTrain {
 
         global.FrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        global.FrontLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
         global.FrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -24,8 +23,6 @@ public class DriveTrain {
 
         global.FrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        global.FrontRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
 
         global.BackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
@@ -33,7 +30,7 @@ public class DriveTrain {
 
         global.BackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        global.BackLeft.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
 
         global.BackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -42,7 +39,7 @@ public class DriveTrain {
 
         global.BackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-        global.BackRight.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
     }
 
     // drives using the setVelocity Function
@@ -132,5 +129,12 @@ public class DriveTrain {
             global.BackLeft.setVelocity(vel);
             global.BackRight.setVelocity(-vel);
         }
+    }
+
+    public static void driveTeleOp(double y, double  x, double rx) {
+        global.FrontLeft.setPower(y + x + rx);
+        global.FrontRight.setPower(y - x + rx);
+        global.BackLeft.setPower(y - x - rx);
+        global.BackRight.setPower(y + x - rx);
     }
 }
