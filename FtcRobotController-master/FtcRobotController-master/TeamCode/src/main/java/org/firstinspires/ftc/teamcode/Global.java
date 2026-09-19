@@ -6,11 +6,11 @@ public class Global {
 
     public static DcMotorEx FLeft;
 
-    public static DcMotorEx FrontRight;
+    public static DcMotorEx FRight;
 
-    public static DcMotorEx BackLeft;
+    public static DcMotorEx BLeft;
 
-    public static DcMotorEx BackRight;
+    public static DcMotorEx BRight;
 
 
 

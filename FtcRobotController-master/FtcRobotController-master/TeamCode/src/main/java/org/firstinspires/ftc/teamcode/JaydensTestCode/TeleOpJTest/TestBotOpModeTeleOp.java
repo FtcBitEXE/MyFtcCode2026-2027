@@ -1,17 +1,19 @@
-package org.firstinspires.ftc.teamcode.JaydensTestCode.TeleOp;
+package org.firstinspires.ftc.teamcode.JaydensTestCode.TeleOpJTest;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.Devices.DriveTrain;
 import org.firstinspires.ftc.teamcode.Devices.FlyWheelScript;
+import org.firstinspires.ftc.teamcode.Devices.ServoScript;
 import org.firstinspires.ftc.teamcode.Global;
 import org.firstinspires.ftc.teamcode.Devices.MotorScript;
 
 @TeleOp
-public class TestBotOpModeGamepad extends LinearOpMode {
+public class TestBotOpModeTeleOp extends LinearOpMode {
 
     private Global global;
 
@@ -25,9 +27,13 @@ public class TestBotOpModeGamepad extends LinearOpMode {
 
     private FlyWheelScript flyWheelScript;
 
+    private ServoScript servoScript;
+
     private DcMotorEx flywheel1;
 
     private DcMotorEx flywheel2;
+
+    private Servo testServo;
 
 
     @Override
@@ -37,14 +43,19 @@ public class TestBotOpModeGamepad extends LinearOpMode {
 
         global.FLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
 
-        global.FrontRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
+        global.FRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
 
-        global.BackRight = hardwareMap.get(DcMotorEx.class, "BackRight");
+        global.BRight = hardwareMap.get(DcMotorEx.class, "BackRight");
 
-        global.BackLeft = hardwareMap.get(DcMotorEx.class, "BackLeft");
+        global.BLeft = hardwareMap.get(DcMotorEx.class, "BackLeft");
 
-        global.FrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        global.BackRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        flywheel1 = hardwareMap.get(DcMotorEx.class, "flywheel1");
+        flywheel2 = hardwareMap.get(DcMotorEx.class, "flywheel2");
+
+        testServo = hardwareMap.get(Servo.class, "testServo");
+
+        global.FRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        global.BRight.setDirection(DcMotorSimple.Direction.REVERSE);
         
         //driveTrain.posBasedMovementInit();
 
@@ -62,8 +73,8 @@ public class TestBotOpModeGamepad extends LinearOpMode {
             motorScript.ControlMotorPwrBased(testMotor, -1, gamepad1.right_bumper);
             motorScript.ControlMotorPwrBased(testMotor, 0, !gamepad1.left_bumper);
             motorScript.ControlMotorPwrBased(testMotor, 0 , !gamepad1.right_bumper);
-            flyWheelScript.SingleFlywheelTeleOp(flywheel1, 1300, gamepad1.a);
-
+            flyWheelScript.DoubleFlywheelVelTeleop(flywheel1, flywheel2, 8 , gamepad1.a);
+            servoScript.ServoTurnDegTeleOp(testServo, 0.45, gamepad1.b);
 
         }
     }

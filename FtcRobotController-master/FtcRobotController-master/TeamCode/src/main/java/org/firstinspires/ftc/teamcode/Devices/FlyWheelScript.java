@@ -12,17 +12,15 @@ public class FlyWheelScript {
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public static void DoubleFlywheelVelTeleop(DcMotorEx flywheel, DcMotorEx flywheel2, double targetVel, int bankVel, int maxVel, int farVel, int B_F, boolean button) {
+    public static void DoubleFlywheelVelTeleop(DcMotorEx flywheel, DcMotorEx flywheel2,  double  bankVel, boolean button) {
         if (button) {
             flywheel.setVelocity(bankVel);
-            if (flywheel.getVelocity() >= bankVel - 50) {
-                flywheel2.setPower(1);
-            } else {
-                flywheel2.setPower(0);
-            }
-        } else {
+            flywheel2.setPower(1);
+
+        } else if (!button && flywheel.getVelocity() == bankVel){
             flywheel.setVelocity(0);
             flywheel2.setPower(0);
+            
         }
     }
 

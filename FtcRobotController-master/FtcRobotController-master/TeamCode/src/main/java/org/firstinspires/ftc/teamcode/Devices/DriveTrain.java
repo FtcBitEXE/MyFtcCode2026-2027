@@ -19,27 +19,27 @@ public class DriveTrain {
 
 
 
-        global.FrontRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        global.FRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        global.FrontRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        global.FRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        global.FrontRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-
-        global.BackLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
-        global.BackLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        global.BackLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        global.FRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
+        global.BLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        global.BLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        global.BLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
-        global.BackRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        global.BackRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        global.BackRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        global.BRight.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        global.BRight.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        global.BRight.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
     }
@@ -53,24 +53,24 @@ public class DriveTrain {
     public static void drivePosBased(int F_B_L_R, double vel) {
         if (F_B_L_R == 1) {
             global.FLeft.setVelocity(vel);
-            global.FrontRight.setVelocity(vel);
-            global.BackLeft.setVelocity(vel);
-            global.BackRight.setVelocity(vel);
+            global.FRight.setVelocity(vel);
+            global.BLeft.setVelocity(vel);
+            global.BRight.setVelocity(vel);
         } else if (F_B_L_R == 2) {
             global.FLeft.setVelocity(-vel);
-            global.FrontRight.setVelocity(-vel);
-            global.BackLeft.setVelocity(-vel);
-            global.BackRight.setVelocity(-vel);
+            global.FRight.setVelocity(-vel);
+            global.BLeft.setVelocity(-vel);
+            global.BRight.setVelocity(-vel);
         } else if (F_B_L_R == 3) {
             global.FLeft.setVelocity(-vel);
-            global.FrontRight.setVelocity(vel);
-            global.BackLeft.setVelocity(vel);
-            global.BackRight.setVelocity(-vel);
+            global.FRight.setVelocity(vel);
+            global.BLeft.setVelocity(vel);
+            global.BRight.setVelocity(-vel);
         } else if (F_B_L_R == 4) {
             global.FLeft.setVelocity(vel);
-            global.FrontRight.setVelocity(-vel);
-            global.BackLeft.setVelocity(-vel);
-            global.BackRight.setVelocity(vel);
+            global.FRight.setVelocity(-vel);
+            global.BLeft.setVelocity(-vel);
+            global.BRight.setVelocity(vel);
         }
     }
 
@@ -83,24 +83,24 @@ public class DriveTrain {
 
         if (F_B_L_R == 1) {
             global.FLeft.setPower(pwr);
-            global.FrontRight.setPower(pwr);
-            global.BackLeft.setPower(pwr);
-            global.BackRight.setPower(pwr);
+            global.FRight.setPower(pwr);
+            global.BLeft.setPower(pwr);
+            global.BRight.setPower(pwr);
         } else if (F_B_L_R == 2) {
             global.FLeft.setPower(-pwr);
-            global.FrontRight.setPower(-pwr);
-            global.BackLeft.setPower(-pwr);
-            global.BackRight.setPower(-pwr);
+            global.FRight.setPower(-pwr);
+            global.BLeft.setPower(-pwr);
+            global.BRight.setPower(-pwr);
         } else if (F_B_L_R == 3) {
             global.FLeft.setPower(-pwr);
-            global.FrontRight.setPower(pwr);
-            global.BackLeft.setPower(pwr);
-            global.BackRight.setPower(-pwr);
+            global.FRight.setPower(pwr);
+            global.BLeft.setPower(pwr);
+            global.BRight.setPower(-pwr);
         } else if (F_B_L_R == 4) {
             global.FLeft.setPower(pwr);
-            global.FrontRight.setPower(-pwr);
-            global.BackLeft.setPower(-pwr);
-            global.BackRight.setPower(pwr);
+            global.FRight.setPower(-pwr);
+            global.BLeft.setPower(-pwr);
+            global.BRight.setPower(pwr);
         }
 
     }
@@ -108,39 +108,39 @@ public class DriveTrain {
     public static void RotatePwrBased(boolean L_R, double pwr) {
         if (L_R) {
             global.FLeft.setPower(-pwr);
-            global.FrontRight.setPower(pwr);
-            global.BackLeft.setPower(-pwr);
-            global.BackRight.setPower(pwr);
+            global.FRight.setPower(pwr);
+            global.BLeft.setPower(-pwr);
+            global.BRight.setPower(pwr);
         } else if (!L_R) {
             global.FLeft.setPower(pwr);
-            global.FrontRight.setPower(-pwr);
-            global.BackLeft.setPower(pwr);
-            global.BackRight.setPower(-pwr);
+            global.FRight.setPower(-pwr);
+            global.BLeft.setPower(pwr);
+            global.BRight.setPower(-pwr);
         }
     }
 
     public static void RotatePosBased(boolean L_R, double vel) {
         if (L_R) {
             global.FLeft.setVelocity(-vel);
-            global.FrontRight.setVelocity(vel);
-            global.BackLeft.setVelocity(-vel);
-            global.BackRight.setVelocity(vel);
+            global.FRight.setVelocity(vel);
+            global.BLeft.setVelocity(-vel);
+            global.BRight.setVelocity(vel);
         } else if (!L_R) {
             global.FLeft.setVelocity(vel);
-            global.FrontRight.setVelocity(-vel);
-            global.BackLeft.setVelocity(vel);
-            global.BackRight.setVelocity(-vel);
+            global.FRight.setVelocity(-vel);
+            global.BLeft.setVelocity(vel);
+            global.BRight.setVelocity(-vel);
         }
     }
 
     public static void driveTeleOp(double y, double  x, double rx) {
         global.FLeft.setPower(y + x + rx);
-        global.FrontRight.setPower(y - x + rx);
-        global.BackLeft.setPower(y - x - rx);
-        global.BackRight.setPower(y + x - rx);
+        global.FRight.setPower(y - x + rx);
+        global.BLeft.setPower(y - x - rx);
+        global.BRight.setPower(y + x - rx);
     }
 
 
 
-    //Chrish Methods Here:
+    //Khrish Methods Here:
 }

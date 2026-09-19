@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.JaydensTestCode.Auto;
+package org.firstinspires.ftc.teamcode.JaydensTestCode.AutoJTest;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.Devices.DriveTrain;
 import org.firstinspires.ftc.teamcode.Global;
 
 @Autonomous
-public class TestBotOpModeAuto extends LinearOpMode {
+public class TestBotOpModeAutoJ extends LinearOpMode {
 
     private Global global;
 
@@ -19,14 +19,14 @@ public class TestBotOpModeAuto extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         global.FLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
 
-        global.FrontRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
+        global.FRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
 
-        global.BackRight = hardwareMap.get(DcMotorEx.class, "BackRight");
+        global.BRight = hardwareMap.get(DcMotorEx.class, "BackRight");
 
-        global.BackLeft = hardwareMap.get(DcMotorEx.class, "BackLeft");
+        global.BLeft = hardwareMap.get(DcMotorEx.class, "BackLeft");
 
-        global.FrontRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        global.BackRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        global.FRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        global.BRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
         waitForStart();
