@@ -1,6 +1,8 @@
-package org.firstinspires.ftc.teamcode.modularscripts;
+package org.firstinspires.ftc.teamcode.DeviceScripts;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.firstinspires.ftc.teamcode.GlobalScript;
 
 public class DriveTrain {
 

@@ -1,14 +1,13 @@
-package org.firstinspires.ftc.teamcode.testbot;
+package org.firstinspires.ftc.teamcode.TestBot.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.Gamepad;
 
-import org.firstinspires.ftc.teamcode.modularscripts.DriveTrain;
-import org.firstinspires.ftc.teamcode.modularscripts.GlobalScript;
-import org.firstinspires.ftc.teamcode.modularscripts.MotorScript;
+import org.firstinspires.ftc.teamcode.DeviceScripts.DriveTrain;
+import org.firstinspires.ftc.teamcode.GlobalScript;
+import org.firstinspires.ftc.teamcode.DeviceScripts.MotorScript;
 
 @TeleOp
 public class TestBotOpModeGamepad extends LinearOpMode {
@@ -25,7 +24,7 @@ public class TestBotOpModeGamepad extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
 
-        testMotor = hardwareMap.get(DcMotorEx.class, "ball_rotation_wheel");
+        testMotor = hardwareMap.get(DcMotorEx.class, "roll");
 
         global.FrontLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
 
@@ -41,6 +40,7 @@ public class TestBotOpModeGamepad extends LinearOpMode {
         //driveTrain.posBasedMovementInit();
 
 
+
         waitForStart();
         resetRuntime();
 
@@ -51,6 +51,8 @@ public class TestBotOpModeGamepad extends LinearOpMode {
             driveTrain.driveTeleOp(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
             motorScript.ControlMotorPwrBased(testMotor, 1, gamepad1.left_bumper);
             motorScript.ControlMotorPwrBased(testMotor, -1, gamepad1.right_bumper);
+            motorScript.ControlMotorPwrBased(testMotor, 0, !gamepad1.left_bumper);
+            motorScript.ControlMotorPwrBased(testMotor, 0 , !gamepad1.right_bumper);
         }
     }
 }

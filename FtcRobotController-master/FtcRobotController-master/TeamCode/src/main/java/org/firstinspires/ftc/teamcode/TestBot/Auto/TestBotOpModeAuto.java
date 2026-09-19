@@ -1,12 +1,12 @@
-package org.firstinspires.ftc.teamcode.testbot;
+package org.firstinspires.ftc.teamcode.TestBot.Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.teamcode.modularscripts.DriveTrain;
-import org.firstinspires.ftc.teamcode.modularscripts.GlobalScript;
+import org.firstinspires.ftc.teamcode.DeviceScripts.DriveTrain;
+import org.firstinspires.ftc.teamcode.GlobalScript;
 
 @Autonomous
 public class TestBotOpModeAuto extends LinearOpMode {

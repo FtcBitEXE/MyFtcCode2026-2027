@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.modularscripts;
+package org.firstinspires.ftc.teamcode.DeviceScripts;
 
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
@@ -23,7 +23,7 @@ public class MotorScript {
     }
 
 
-    public void ControlMotorPwrBased(DcMotorEx Motor, double pwr, boolean button) {
+    public static void ControlMotorPwrBased(DcMotorEx Motor, double pwr,  boolean button) {
         if (button) {
             Motor.setPower(pwr);
         }
