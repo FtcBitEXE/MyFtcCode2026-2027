@@ -11,11 +11,11 @@ public class DriveTrain {
     //initializes movement that uses velocity
     //only use if using velocity based movement
     public static void posBasedMovementInit() {
-        global.FrontLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        global.FLeft.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        global.FrontLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        global.FLeft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        global.FrontLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        global.FLeft.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
 
@@ -52,22 +52,22 @@ public class DriveTrain {
     // if F_B_L_R is 4 it will go right
     public static void drivePosBased(int F_B_L_R, double vel) {
         if (F_B_L_R == 1) {
-            global.FrontLeft.setVelocity(vel);
+            global.FLeft.setVelocity(vel);
             global.FrontRight.setVelocity(vel);
             global.BackLeft.setVelocity(vel);
             global.BackRight.setVelocity(vel);
         } else if (F_B_L_R == 2) {
-            global.FrontLeft.setVelocity(-vel);
+            global.FLeft.setVelocity(-vel);
             global.FrontRight.setVelocity(-vel);
             global.BackLeft.setVelocity(-vel);
             global.BackRight.setVelocity(-vel);
         } else if (F_B_L_R == 3) {
-            global.FrontLeft.setVelocity(-vel);
+            global.FLeft.setVelocity(-vel);
             global.FrontRight.setVelocity(vel);
             global.BackLeft.setVelocity(vel);
             global.BackRight.setVelocity(-vel);
         } else if (F_B_L_R == 4) {
-            global.FrontLeft.setVelocity(vel);
+            global.FLeft.setVelocity(vel);
             global.FrontRight.setVelocity(-vel);
             global.BackLeft.setVelocity(-vel);
             global.BackRight.setVelocity(vel);
@@ -82,22 +82,22 @@ public class DriveTrain {
     public static void drivePwrBased(int F_B_L_R, double pwr) {
 
         if (F_B_L_R == 1) {
-            global.FrontLeft.setPower(pwr);
+            global.FLeft.setPower(pwr);
             global.FrontRight.setPower(pwr);
             global.BackLeft.setPower(pwr);
             global.BackRight.setPower(pwr);
         } else if (F_B_L_R == 2) {
-            global.FrontLeft.setPower(-pwr);
+            global.FLeft.setPower(-pwr);
             global.FrontRight.setPower(-pwr);
             global.BackLeft.setPower(-pwr);
             global.BackRight.setPower(-pwr);
         } else if (F_B_L_R == 3) {
-            global.FrontLeft.setPower(-pwr);
+            global.FLeft.setPower(-pwr);
             global.FrontRight.setPower(pwr);
             global.BackLeft.setPower(pwr);
             global.BackRight.setPower(-pwr);
         } else if (F_B_L_R == 4) {
-            global.FrontLeft.setPower(pwr);
+            global.FLeft.setPower(pwr);
             global.FrontRight.setPower(-pwr);
             global.BackLeft.setPower(-pwr);
             global.BackRight.setPower(pwr);
@@ -107,12 +107,12 @@ public class DriveTrain {
 
     public static void RotatePwrBased(boolean L_R, double pwr) {
         if (L_R) {
-            global.FrontLeft.setPower(-pwr);
+            global.FLeft.setPower(-pwr);
             global.FrontRight.setPower(pwr);
             global.BackLeft.setPower(-pwr);
             global.BackRight.setPower(pwr);
         } else if (!L_R) {
-            global.FrontLeft.setPower(pwr);
+            global.FLeft.setPower(pwr);
             global.FrontRight.setPower(-pwr);
             global.BackLeft.setPower(pwr);
             global.BackRight.setPower(-pwr);
@@ -121,12 +121,12 @@ public class DriveTrain {
 
     public static void RotatePosBased(boolean L_R, double vel) {
         if (L_R) {
-            global.FrontLeft.setVelocity(-vel);
+            global.FLeft.setVelocity(-vel);
             global.FrontRight.setVelocity(vel);
             global.BackLeft.setVelocity(-vel);
             global.BackRight.setVelocity(vel);
         } else if (!L_R) {
-            global.FrontLeft.setVelocity(vel);
+            global.FLeft.setVelocity(vel);
             global.FrontRight.setVelocity(-vel);
             global.BackLeft.setVelocity(vel);
             global.BackRight.setVelocity(-vel);
@@ -134,9 +134,13 @@ public class DriveTrain {
     }
 
     public static void driveTeleOp(double y, double  x, double rx) {
-        global.FrontLeft.setPower(y + x + rx);
+        global.FLeft.setPower(y + x + rx);
         global.FrontRight.setPower(y - x + rx);
         global.BackLeft.setPower(y - x - rx);
         global.BackRight.setPower(y + x - rx);
     }
+
+
+
+    //Chrish Methods Here:
 }

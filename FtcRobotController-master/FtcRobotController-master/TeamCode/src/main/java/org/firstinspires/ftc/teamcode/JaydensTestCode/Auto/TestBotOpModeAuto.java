@@ -17,7 +17,7 @@ public class TestBotOpModeAuto extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        global.FrontLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
+        global.FLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
 
         global.FrontRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
 

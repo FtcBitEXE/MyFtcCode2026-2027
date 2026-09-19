@@ -4,7 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 
 public class Global {
 
-    public static DcMotorEx FrontLeft;
+    public static DcMotorEx FLeft;
 
     public static DcMotorEx FrontRight;
 

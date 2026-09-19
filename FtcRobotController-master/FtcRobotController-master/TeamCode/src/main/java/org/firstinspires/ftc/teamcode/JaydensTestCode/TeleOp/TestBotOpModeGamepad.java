@@ -35,7 +35,7 @@ public class TestBotOpModeGamepad extends LinearOpMode {
 
         testMotor = hardwareMap.get(DcMotorEx.class, "roll");
 
-        global.FrontLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
+        global.FLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
 
         global.FrontRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
 
