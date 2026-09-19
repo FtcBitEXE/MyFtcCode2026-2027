@@ -2,7 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 
-public class GlobalScript {
+public class Global {
 
     public static DcMotorEx FrontLeft;
 

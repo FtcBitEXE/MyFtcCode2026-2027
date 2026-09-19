@@ -1,24 +1,33 @@
-package org.firstinspires.ftc.teamcode.TestBot.TeleOp;
+package org.firstinspires.ftc.teamcode.JaydensTestCode.TeleOp;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
-import org.firstinspires.ftc.teamcode.DeviceScripts.DriveTrain;
-import org.firstinspires.ftc.teamcode.GlobalScript;
-import org.firstinspires.ftc.teamcode.DeviceScripts.MotorScript;
+import org.firstinspires.ftc.teamcode.Devices.DriveTrain;
+import org.firstinspires.ftc.teamcode.Devices.FlyWheelScript;
+import org.firstinspires.ftc.teamcode.Global;
+import org.firstinspires.ftc.teamcode.Devices.MotorScript;
 
 @TeleOp
 public class TestBotOpModeGamepad extends LinearOpMode {
 
-    private GlobalScript global;
+    private Global global;
 
     private DriveTrain driveTrain;
 
     private MotorScript motorScript;
 
+
+
     private DcMotorEx testMotor;
+
+    private FlyWheelScript flyWheelScript;
+
+    private DcMotorEx flywheel1;
+
+    private DcMotorEx flywheel2;
 
 
     @Override
@@ -53,6 +62,9 @@ public class TestBotOpModeGamepad extends LinearOpMode {
             motorScript.ControlMotorPwrBased(testMotor, -1, gamepad1.right_bumper);
             motorScript.ControlMotorPwrBased(testMotor, 0, !gamepad1.left_bumper);
             motorScript.ControlMotorPwrBased(testMotor, 0 , !gamepad1.right_bumper);
+            flyWheelScript.SingleFlywheelTeleOp(flywheel1, 1300, gamepad1.a);
+
+
         }
     }
 }

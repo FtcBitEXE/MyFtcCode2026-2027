@@ -1,12 +1,12 @@
-package org.firstinspires.ftc.teamcode.DeviceScripts;
+package org.firstinspires.ftc.teamcode.Devices;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.teamcode.GlobalScript;
+import org.firstinspires.ftc.teamcode.Global;
 
 public class DriveTrain {
 
-    private static GlobalScript global;
+    private static Global global;
 
     //initializes movement that uses velocity
     //only use if using velocity based movement

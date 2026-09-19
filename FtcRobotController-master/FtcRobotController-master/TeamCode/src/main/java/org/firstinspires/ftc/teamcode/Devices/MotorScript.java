@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.DeviceScripts;
+package org.firstinspires.ftc.teamcode.Devices;
 
 
 import com.qualcomm.robotcore.hardware.DcMotorEx;
