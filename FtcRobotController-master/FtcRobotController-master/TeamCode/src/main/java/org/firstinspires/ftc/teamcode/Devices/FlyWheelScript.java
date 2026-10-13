@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode.Devices;
 
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 
 public class FlyWheelScript {
 
@@ -12,13 +13,13 @@ public class FlyWheelScript {
         flywheel.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
-    public static void DoubleFlywheelVelTeleop(DcMotorEx flywheel, DcMotorEx flywheel2,  double  bankVel, boolean button) {
+    public static void DoubleFlywheelPwrTeleop(DcMotorEx flywheel, DcMotorEx flywheel2, double  bankVel, boolean button) {
         if (button) {
-            flywheel.setVelocity(bankVel);
-            flywheel2.setPower(1);
+            flywheel.setPower(bankVel);
+            flywheel2.setPower(-bankVel);
 
-        } else if (!button && flywheel.getVelocity() == bankVel){
-            flywheel.setVelocity(0);
+        } else if (!button){
+            flywheel.setPower(0);
             flywheel2.setPower(0);
             
         }

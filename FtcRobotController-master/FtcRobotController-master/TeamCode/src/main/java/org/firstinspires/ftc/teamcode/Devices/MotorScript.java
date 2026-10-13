@@ -19,6 +19,8 @@ public class MotorScript {
     public void ControlMotorPosBased(DcMotorEx Motor, double vel, boolean button) {
         if (button) {
             Motor.setVelocity(vel);
+        }else if (!button) {
+            Motor.setVelocity(0);
         }
     }
 
@@ -26,6 +28,8 @@ public class MotorScript {
     public static void ControlMotorPwrBased(DcMotorEx Motor, double pwr,  boolean button) {
         if (button) {
             Motor.setPower(pwr);
+        } else if (!button) {
+            Motor.setPower(0);
         }
     }
 }
