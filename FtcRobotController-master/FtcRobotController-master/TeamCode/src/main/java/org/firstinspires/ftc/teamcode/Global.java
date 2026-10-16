@@ -52,4 +52,11 @@ public class Global {
     public int lastDistanceTagId = -1;
     public int distanceMedianIndex = 0;
     public int distanceMedianCount = 0;
+    public int DISTANCE_MEDIAN_SIZE = 7;
+    public double[] distanceMedianBuffer = new double[DISTANCE_MEDIAN_SIZE];
+
+    public static final double DISTANCE_FILTER_TAU = 0.12;
+    public static final double MAX_DISTANCE_JUMP_METERS = 0.45;
+    public static final double DISTANCE_TIMEOUT_SEC = 0.5;
+    public ElapsedTime loopTimer = new ElapsedTime();
 }
