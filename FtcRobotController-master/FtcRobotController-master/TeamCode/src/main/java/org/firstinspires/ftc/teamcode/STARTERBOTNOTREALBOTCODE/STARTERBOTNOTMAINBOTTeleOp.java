@@ -40,7 +40,7 @@ public class STARTERBOTNOTMAINBOTTeleOp extends LinearOpMode {
 
         while (opModeIsActive()) {
             //Oooh, these actually look good! Could be simplified, but good enough!
-            driveTrain.driveTeleOp(-gamepad1.left_stick_y, gamepad1.left_stick_x, gamepad1.right_stick_x);
+            driveTrain.driveTeleOp(-gamepad1.right_stick_y, gamepad1.right_stick_x, gamepad1.left_stick_x);
             motorScript.ControlMotorPwrBased(Intake,1, gamepad1.left_bumper);
             motorScript.ControlMotorPwrBased(Intake,1, gamepad1.right_bumper);
             flyWheelScript.DoubleFlywheelPwrTeleop(Outake1, Outake2, 1, gamepad1.a);
