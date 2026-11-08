@@ -307,7 +307,7 @@ public class CyberByteTeleOP extends LinearOpMode {
                 double power = (error * Kp) + (integralSum * Ki) + (derivative * Kd);
 
                 // --- PERFECT SELF-ALIGN LOGIC ---
-                // If error exceeds 10, the standard PID (Kp*Error) might be too weak to move the motor.
+                // If error exceeds 10, the standard PID (Kp*Error) might be too weak to move the motor.=
                 // We overwrite the power to a minimum "Stiction Overcoming" value to snap it into place.
                 if (Math.abs(error) > 10) {
                     // If power calculated is too low to move, boost it to +/- 0.15 minimum

@@ -45,7 +45,7 @@ public class SquareAuto extends LinearOpMode {
             robot.sleeep(1000);
             robot.turn(0.8, 682);
             robot.sleeep(750);
-            limelight.wUintilLLscan(-1); //do not know tag yet. check on thursday
+            limelight.wUintilLLscan(-1); //do not know tag yet. check on monday
             //Insert launch code here
             robot.strafe(1.0, -1300);
             robot.sleeep(1000);

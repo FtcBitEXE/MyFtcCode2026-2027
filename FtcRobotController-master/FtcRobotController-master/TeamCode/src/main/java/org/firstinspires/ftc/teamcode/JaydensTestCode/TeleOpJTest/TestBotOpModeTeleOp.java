@@ -75,9 +75,9 @@ public class TestBotOpModeTeleOp extends LinearOpMode {
 
         
         while (opModeIsActive()) {
-            telemetry.addData("tagId", global.tagId);
-            telemetry.addData("best", global.best);
-            telemetry.addData("llvaid", global.llvaid);
+            //telemetry.addData("tagId", global.tagId);
+            //telemetry.addData("best", global.best);
+            //telemetry.addData("llvaid", global.llvaid);
             telemetry.addData("Red", sensorScript.GetColor(colorSensor).red);
             telemetry.addData("Green", sensorScript.GetColor(colorSensor).green);
             telemetry.addData("Blue", sensorScript.GetColor(colorSensor).blue);

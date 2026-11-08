@@ -17,16 +17,16 @@ public class TestBotOpModeAutoJ extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        global.FLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
+        //global.FLeft = hardwareMap.get(DcMotorEx.class, "FrontLeft");
 
-        global.FRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
+        //global.FRight = hardwareMap.get(DcMotorEx.class, "FrontRight");
 
-        global.BRight = hardwareMap.get(DcMotorEx.class, "BackRight");
+        //global.BRight = hardwareMap.get(DcMotorEx.class, "BackRight");
 
-        global.BLeft = hardwareMap.get(DcMotorEx.class, "BackLeft");
+        //global.BLeft = hardwareMap.get(DcMotorEx.class, "BackLeft");
 
-        global.FRight.setDirection(DcMotorSimple.Direction.REVERSE);
-        global.BRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        //global.FRight.setDirection(DcMotorSimple.Direction.REVERSE);
+        //global.BRight.setDirection(DcMotorSimple.Direction.REVERSE);
 
 
         waitForStart();

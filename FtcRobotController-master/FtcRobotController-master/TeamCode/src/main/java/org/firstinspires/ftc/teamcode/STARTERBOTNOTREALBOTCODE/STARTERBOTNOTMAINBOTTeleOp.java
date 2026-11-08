@@ -14,6 +14,7 @@ public class STARTERBOTNOTMAINBOTTeleOp extends LinearOpMode {
 
     //Thanks, Jayden!
     //Simplified a little bit
+    double Infinity = 1.0e308;
     private Global global;
     private DriveTrain driveTrain;
     private MotorScript motorScript;
@@ -38,8 +39,8 @@ public class STARTERBOTNOTMAINBOTTeleOp extends LinearOpMode {
 
         while (opModeIsActive()) {
             //use this if works
-            float drivePower = -gamepad1.right_stick_y;
-            float rotatePower = gamepad1.left_stick_x;
+            float rotatePower = -gamepad1.right_stick_y;
+            float drivePower = gamepad1.left_stick_x;
             double leftPower  = drivePower + rotatePower;
             double rightPower = drivePower - rotatePower;
             lDrive.setPower(leftPower);
@@ -49,12 +50,12 @@ public class STARTERBOTNOTMAINBOTTeleOp extends LinearOpMode {
             //rDrive.setPower(gamepad1.right_stick_y);
 
             //not confident these will work
-            motorScript.ControlMotorPwrBased(Intake,1, gamepad1.left_bumper);
-            motorScript.ControlMotorPwrBased(Intake,-1, gamepad1.right_bumper);
+            motorScript.ControlMotorPwrBased(Intake,-1, gamepad1.left_bumper);
+            motorScript.ControlMotorPwrBased(Intake,1, gamepad1.right_bumper);
 
             //flyWheelScript.SingleFlywheelTeleOp(Outake1, 1, gamepad1.a);
             if (gamepad1.right_trigger > 0.2) {
-                Outake1.setPower(1);
+                Outake1.setPower(0.6);
             } else {
                 Outake1.setPower(0);
             }
