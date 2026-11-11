@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Devices;
 
+import android.graphics.Color;
+
 import com.qualcomm.robotcore.hardware.DistanceSensor;
 import com.qualcomm.robotcore.hardware.NormalizedColorSensor;
 import com.qualcomm.robotcore.hardware.NormalizedRGBA;
@@ -23,15 +25,34 @@ public class SensorScript {
     }
     //Biobuzz specific
 
-    public static void GetBuzz(NormalizedColorSensor colorSensor) {
+    public static String GetBuzz(NormalizedColorSensor colorSensor) {
+        final float[] hsv_values = new float[3];
+        NormalizedRGBA colors = colorSensor.getNormalizedColors();
+        Color.colorToHSV(colors.toColor(), hsv_values);
+        final float SAT_THRESHOLD = 0.30f;
+        final float VAL_THRESHOLD = 0.10f;
 
-        NormalizedRGBA color = colorSensor.getNormalizedColors();
+        float hue = hsv_values[0]; // 0 - 360
+        float sat = hsv_values[1]; // 0 - 1
+        float val = hsv_values[2]; // 0 - 1
+        String detected = "Empty";
+        boolean detected_latly = false;
 
-        if (color.red >=210 && color.green >= 200) {
-
+        if (sat >= SAT_THRESHOLD && val >= VAL_THRESHOLD) {
+            if (!detected_latly) {
+                if (hue >= 30f && hue < 150f) {
+                    detected = "Pollen";
+                    detected_latly = true;
+                } else {
+                    detected = "Empty";
+                }
+            }   else {
+                return "late";
+            }
         }
 
+        return detected;
+
+
     }
-
-
 }

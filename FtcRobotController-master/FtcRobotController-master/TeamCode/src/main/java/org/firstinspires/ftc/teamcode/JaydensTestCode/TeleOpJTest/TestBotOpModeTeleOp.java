@@ -45,6 +45,7 @@ public class TestBotOpModeTeleOp extends LinearOpMode {
     private SensorScript sensorScript;
 
     private NormalizedColorSensor colorSensor;
+    private NormalizedColorSensor colorSensor2;
 
     private DistanceSensor distanceSensor;
 
@@ -58,10 +59,10 @@ public class TestBotOpModeTeleOp extends LinearOpMode {
 
         //global.BRight = hardwareMap.get(DcMotorEx.class, "BackRight");
 
-        limelight = hardwareMap.get(Limelight3A.class, "limelight");
+       // limelight = hardwareMap.get(Limelight3A.class, "limelight");
 
         colorSensor = hardwareMap.get(NormalizedColorSensor.class, "colorSensor");
-        distanceSensor = hardwareMap.get(DistanceSensor.class, "distanceSensor");
+        //colorSensor2 = hardwareMap.get(NormalizedColorSensor.class, "colorSensor2");
 
         //global.BLeft = hardwareMap.get(DcMotorEx.class, "BackLeft");
 
