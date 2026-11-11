@@ -17,6 +17,9 @@ public class Global {
 
     public static DcMotorEx Intake;
 
+    public static DcMotorEx Launch;
+
+    public static DcMotorEx Transfer;
     public static IMU imu;
     public static Limelight3A limelight;
     public static final double TICKS_PER_REV   = 537.7;    // goBILDA 5203 13.7:1
@@ -62,6 +65,9 @@ public class Global {
     public static int lastDistanceTagId = -1;
 
     // Edge Detection
+
+    public static boolean launcherOn = false;
+    public static boolean lastLaunch = false;
     public static boolean last2A = false;
     public static boolean last2B = false;
     public static boolean last2Y = false;

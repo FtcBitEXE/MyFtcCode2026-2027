@@ -179,18 +179,38 @@ public class DriveTrain {
     }
 
     public static void driveTeleOpLimelight(double y, double  x, double rx) {
-        /*global.Fleft.setPower(y + x + rx);
+        global.Fleft.setPower(y + x + rx);
         global.Fright.setPower(y - x - rx);
         global.Bleft.setPower(y - x + rx);
         global.Bright.setPower(y + x - rx);
+
         if (gamepad1.right_trigger > 0.2) {
             global.Intake.setPower(0.5); // INTAKE IN
         } else if (gamepad1.left_trigger > 0.2) {
-            global.Intake.setPower(-0.75); // INTAKE OUT
+            global.Intake.setPower(-0.75); // INTAKE OUT. Outtake?
         } else {
             global.Intake.setPower(0);
-        }*/
+        }
 
+        if (gamepad2.right_trigger > 0.2) {
+            global.Transfer.setPower(0.5); // TRANSFER IN
+        } else if (gamepad2.left_trigger > 0.2) {
+            global.Transfer.setPower(-0.75); // TRANSFER OUT
+        } else {
+            global.Transfer.setPower(0);
+        }
+
+        if (gamepad2.right_bumper && !global.lastLaunch) {
+            global.launcherOn = !global.launcherOn; // Flip the state (true -> false or false -> true)
+        }
+        global.lastLaunch = gamepad2.right_bumper; // Update the previous state for the next loop
+
+        // Set motor power based on the toggle state
+        if (global.launcherOn) {
+            global.Launch.setPower(0.8);
+        } else {
+            global.Launch.setPower(0);
+        }
         double dt = global.loopTimer.seconds();
         global.loopTimer.reset();
 
@@ -408,6 +428,9 @@ public class DriveTrain {
         global.Fright = hardwareMap.get(DcMotorEx.class,"Fright");
         global.Bleft = hardwareMap.get(DcMotorEx.class,"Bleft");
         global.Bright = hardwareMap.get(DcMotorEx.class,"Bright");
+        global.Intake = hardwareMap.get(DcMotorEx.class,"Intake");
+        global.Launch = hardwareMap.get(DcMotorEx.class,"Launch");
+        global.Transfer = hardwareMap.get(DcMotorEx.class,"Transfer");
         //Sets direction to reverse (important when using mecanum wheels)
         global.Fright.setDirection(DcMotorSimple.Direction.REVERSE);
         global.Bright.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -417,11 +440,13 @@ public class DriveTrain {
             m.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             m.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         }
-        //Limelight
+        /*//Limelight
         global.limelight = hardwareMap.get(Limelight3A.class, "limelight");
         if (global.limelight == null) {
             throw new NullPointerException("Limelight named 'limelight' not found in hardwareMap");
-        }
+        }*/
+        //Checks hardwareMap so that the motors are there
+        checkHardwareMap(hardwareMap);
         // IMU init
         global.imu = hardwareMap.get(IMU.class, "imu");
         RevHubOrientationOnRobot orientation = new RevHubOrientationOnRobot(
@@ -603,6 +628,37 @@ public class DriveTrain {
             telemetry.update();
         }
         stopDrive();
+    }
+
+    public static void checkHardwareMap(HardwareMap hardwareMap){
+        global.Fleft = hardwareMap.get(DcMotorEx.class, "Fleft");
+        if (global.Fleft == null) {
+            throw new NullPointerException("DcMotorEx named 'Fleft' not found in hardwareMap");
+        }
+        global.Fright = hardwareMap.get(DcMotorEx.class, "Fright");
+        if (global.Fright == null) {
+            throw new NullPointerException("DcMotorEx named 'Fright' not found in hardwareMap");
+        }
+        global.Bleft = hardwareMap.get(DcMotorEx.class, "Bleft");
+        if (global.Bleft == null) {
+            throw new NullPointerException("DcMotorEx named 'Bleft' not found in hardwareMap");
+        }
+        global.Bright = hardwareMap.get(DcMotorEx.class, "Bright");
+        if (global.Bright == null) {
+            throw new NullPointerException("DcMotorEx named 'Bright' not found in hardwareMap");
+        }
+        global.Intake = hardwareMap.get(DcMotorEx.class, "Intake");
+        if (global.Intake == null) {
+            throw new NullPointerException("DcMotorEx named 'Intake' not found in hardwareMap");
+        }
+        global.Launch = hardwareMap.get(DcMotorEx.class, "Launch");
+        if (global.Launch == null) {
+            throw new NullPointerException("DcMotorEx named 'Launch' not found in hardwareMap");
+        }
+        global.Transfer = hardwareMap.get(DcMotorEx.class, "Transfer");
+        if (global.Transfer == null) {
+            throw new NullPointerException("DcMotorEx named 'Transfer' not found in hardwareMap");
+        }
     }
 }
 
