@@ -1,5 +1,4 @@
 package org.firstinspires.ftc.teamcode.TeleOp;
-import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.Devices.DriveTrain;
@@ -11,13 +10,10 @@ public class CByteTeleOp1 extends LinearOpMode {
     private static Global global;
     public void runOpMode(){
         robot.motorInit(hardwareMap);
-        global.limelight = hardwareMap.get(Limelight3A.class, "limelight");
-        if (global.limelight == null) {
-            throw new NullPointerException("Limelight named 'limelight' not found in hardwareMap");
-        }
+        robot.checkHardwareMap(hardwareMap);
         waitForStart();
         while (opModeIsActive()){
-            robot.driveTeleOpLimelight(-gamepad1.right_stick_y, gamepad1.right_stick_x, gamepad1.left_stick_x);
+            robot.driveTeleOp(-gamepad1.right_stick_y, gamepad1.right_stick_x, gamepad1.left_stick_x);
             telemetry.addData("Fleft", global.Fleft.getCurrentPosition());
             telemetry.addData("Fright", global.Fright.getCurrentPosition());
             telemetry.addData("Bleft", global.Bleft.getCurrentPosition());

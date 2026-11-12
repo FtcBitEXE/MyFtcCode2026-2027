@@ -46,17 +46,25 @@ public class NonagonAuto extends LinearOpMode {
             robot.turn(0.6, 220);
             robot.sleeep(500);
             //Insert launch code here
-            //robot.pewpew(launchnumber, launchpid oh no);
+            global.Launch1.setPower(0.8);
+            global.Launch2.setPower(0.8);
+            global.Transfer.setPower(1);
+            sleep(2000);
+            global.Launch1.setPower(0);
+            global.Launch2.setPower(0);
+            global.Transfer.setPower(0);
             //Turns to the flower to collect
             robot.turn(0.6, -565);
             robot.sleeep(500);
+            robot.flower(1);
+            robot.sleeep(500);
             //Moves to flower to collect
             robot.forward(0.6, 1000);
-            robot.sleeep(1000);
-            //Collect from flower code
-            //robot.collectfromflowerithinkbecauseiamwritingthisinthepastsoidontknowwatthiswillbecalledbutanyaysigottogetbacktoworksothisthingymajigisforcollectingfromtheflowersoyeahbyebyefellowreader!!();
-            //Move backwards to not hit flower
+            robot.sleeep(2000);
+            // Move backwards to not hit flower
             robot.forward(0.6, -200);
+            robot.sleeep(500);
+            robot.flower(0);
             robot.sleeep(500);
             //Turns to face Hive
             robot.turn(0.6, 400);
@@ -76,9 +84,14 @@ public class NonagonAuto extends LinearOpMode {
             //Moves backwards to launch
             robot.forward(0.6, -400);
             robot.sleeep(650);
-            //aunchlay Odecay
-            //robot.pewpew(launchnumber, launchpid oh no);
-            //Strafe to the Loading Area
+            //Launch
+            global.Launch1.setPower(0.8);
+            global.Launch2.setPower(0.8);
+            global.Transfer.setPower(1);
+            sleep(2000);
+            global.Launch1.setPower(0);
+            global.Launch2.setPower(0);
+            global.Transfer.setPower(0);
             //Move forward
             robot.forward(0.6, 400);
             robot.sleeep(650);

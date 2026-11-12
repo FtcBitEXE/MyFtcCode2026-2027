@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 public class Global {
@@ -17,9 +18,15 @@ public class Global {
 
     public static DcMotorEx Intake;
 
-    public static DcMotorEx Launch;
+    public static DcMotorEx Launch1;
+
+    public static DcMotorEx Launch2;
 
     public static DcMotorEx Transfer;
+
+    public static Servo Rflower;
+
+    public static Servo Lflower;
     public static IMU imu;
     public static Limelight3A limelight;
     public static final double TICKS_PER_REV   = 537.7;    // goBILDA 5203 13.7:1

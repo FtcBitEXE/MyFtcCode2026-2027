@@ -30,7 +30,13 @@ public class SquareAuto extends LinearOpMode {
             telemetry.update();
             robot.forward(0.8, 350);
             robot.sleeep(750);
-            //Insert launch code here
+            global.Launch1.setPower(0.8);
+            global.Launch2.setPower(0.8);
+            global.Transfer.setPower(1);
+            sleep(2000);
+            global.Launch1.setPower(0);
+            global.Launch2.setPower(0);
+            global.Transfer.setPower(0);
             robot.turn(0.8, -682);
             robot.sleeep(750);
             robot.strafe(1.0, -500);
@@ -45,8 +51,14 @@ public class SquareAuto extends LinearOpMode {
             robot.sleeep(1000);
             robot.turn(0.8, 682);
             robot.sleeep(750);
-            limelight.wUintilLLscan(-1); //do not know tag yet. check on monday
-            //Insert launch code here
+            limelight.wUintilLLscan(35); //unsure if work
+            global.Launch1.setPower(0.8);
+            global.Launch2.setPower(0.8);
+            global.Transfer.setPower(1);
+            sleep(2000);
+            global.Launch1.setPower(0);
+            global.Launch2.setPower(0);
+            global.Transfer.setPower(0);
             robot.strafe(1.0, -1300);
             robot.sleeep(1000);
             robot.forward(0.8, 2300);

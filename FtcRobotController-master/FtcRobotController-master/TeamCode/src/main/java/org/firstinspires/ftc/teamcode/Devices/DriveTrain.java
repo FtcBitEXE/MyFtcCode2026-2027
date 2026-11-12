@@ -14,6 +14,7 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
@@ -169,12 +170,41 @@ public class DriveTrain {
         global.Fright.setPower(y - x - rx);
         global.Bleft.setPower(y - x + rx);
         global.Bright.setPower(y + x - rx);
+
         if (gamepad1.right_trigger > 0.2) {
             global.Intake.setPower(0.5); // INTAKE IN
         } else if (gamepad1.left_trigger > 0.2) {
-            global.Intake.setPower(-0.75); // INTAKE OUT
+            global.Intake.setPower(-0.75); // INTAKE OUT. Outtake?
         } else {
-           global.Intake.setPower(0);
+            global.Intake.setPower(0);
+        }
+
+        if (gamepad2.right_trigger > 0.2) {
+            global.Transfer.setPower(0.5); // TRANSFER IN
+        } else if (gamepad2.left_trigger > 0.2) {
+            global.Transfer.setPower(-0.75); // TRANSFER OUT. Ounsfer...? Ounsfer.
+        } else {
+            global.Transfer.setPower(0);
+        }
+
+        if (gamepad1.right_bumper) {
+            global.Rflower.setPosition(1);
+            global.Lflower.setPosition(1);
+        } else {
+            global.Rflower.setPosition(0);
+            global.Lflower.setPosition(0);
+        }
+
+        if (gamepad2.right_bumper && !global.lastLaunch) {
+            global.launcherOn = !global.launcherOn; // Flip the state (true -> false or false -> true)
+        }
+        global.lastLaunch = gamepad2.right_bumper; // Update the previous state for the next loop
+
+        // Set motor power based on the toggle state
+        if (global.launcherOn) {
+            global.Launch1.setPower(0.8);
+        } else {
+            global.Launch1.setPower(0);
         }
     }
 
@@ -195,9 +225,17 @@ public class DriveTrain {
         if (gamepad2.right_trigger > 0.2) {
             global.Transfer.setPower(0.5); // TRANSFER IN
         } else if (gamepad2.left_trigger > 0.2) {
-            global.Transfer.setPower(-0.75); // TRANSFER OUT
+            global.Transfer.setPower(-0.75); // TRANSFER OUT. Ounsfer...? Ounsfer.
         } else {
             global.Transfer.setPower(0);
+        }
+
+        if (gamepad1.right_bumper) {
+            global.Rflower.setPosition(1);
+            global.Lflower.setPosition(1);
+        } else {
+            global.Rflower.setPosition(0);
+            global.Lflower.setPosition(0);
         }
 
         if (gamepad2.right_bumper && !global.lastLaunch) {
@@ -207,10 +245,11 @@ public class DriveTrain {
 
         // Set motor power based on the toggle state
         if (global.launcherOn) {
-            global.Launch.setPower(0.8);
+            global.Launch1.setPower(0.8);
         } else {
-            global.Launch.setPower(0);
+            global.Launch1.setPower(0);
         }
+
         double dt = global.loopTimer.seconds();
         global.loopTimer.reset();
 
@@ -429,11 +468,16 @@ public class DriveTrain {
         global.Bleft = hardwareMap.get(DcMotorEx.class,"Bleft");
         global.Bright = hardwareMap.get(DcMotorEx.class,"Bright");
         global.Intake = hardwareMap.get(DcMotorEx.class,"Intake");
-        global.Launch = hardwareMap.get(DcMotorEx.class,"Launch");
+        global.Launch1 = hardwareMap.get(DcMotorEx.class,"Launch1");
+        global.Launch2 = hardwareMap.get(DcMotorEx.class,"Launch2");
         global.Transfer = hardwareMap.get(DcMotorEx.class,"Transfer");
-        //Sets direction to reverse (important when using mecanum wheels)
+        global.Rflower = hardwareMap.get(Servo.class, "Rflower");
+        global.Lflower = hardwareMap.get(Servo.class, "Lflower");
+        //Sets direction to reverse (mecanum wheels, flower machiney thing)
         global.Fright.setDirection(DcMotorSimple.Direction.REVERSE);
         global.Bright.setDirection(DcMotorSimple.Direction.REVERSE);
+        global.Lflower.setDirection(Servo.Direction.REVERSE);
+        global.Launch2.setDirection(DcMotorSimple.Direction.REVERSE);
         //Motor stuff ig (thanks to CJ :))))
         for (DcMotorEx m : new DcMotorEx[]{global.Fleft, global.Fright, global.Bleft, global.Bright}) {
             m.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -445,8 +489,6 @@ public class DriveTrain {
         if (global.limelight == null) {
             throw new NullPointerException("Limelight named 'limelight' not found in hardwareMap");
         }*/
-        //Checks hardwareMap so that the motors are there
-        checkHardwareMap(hardwareMap);
         // IMU init
         global.imu = hardwareMap.get(IMU.class, "imu");
         RevHubOrientationOnRobot orientation = new RevHubOrientationOnRobot(
@@ -526,6 +568,16 @@ public class DriveTrain {
         global.Bleft.setPower(power);
         global.Fright.setPower(power);
         global.Bright.setPower(power);
+    }
+    //1 is collect; 0 is hidden
+    public static void flower(int pos){
+        if (pos == 1){
+            global.Rflower.setPosition(1);
+            global.Lflower.setPosition(1);
+        } else if (pos == 0) {
+            global.Rflower.setPosition(0);
+            global.Lflower.setPosition(0);
+        }
     }
     // Helpers
     // fwd: + forward | strafe: + right | turn: + CCW
@@ -630,6 +682,8 @@ public class DriveTrain {
         stopDrive();
     }
 
+    //Used to make sure devices are plugged into the Control Hub and Expansion Hub
+    //Jayden thinks otherwise, but idc >:)))
     public static void checkHardwareMap(HardwareMap hardwareMap){
         global.Fleft = hardwareMap.get(DcMotorEx.class, "Fleft");
         if (global.Fleft == null) {
@@ -651,13 +705,25 @@ public class DriveTrain {
         if (global.Intake == null) {
             throw new NullPointerException("DcMotorEx named 'Intake' not found in hardwareMap");
         }
-        global.Launch = hardwareMap.get(DcMotorEx.class, "Launch");
-        if (global.Launch == null) {
-            throw new NullPointerException("DcMotorEx named 'Launch' not found in hardwareMap");
+        global.Launch1 = hardwareMap.get(DcMotorEx.class, "Launch1");
+        if (global.Launch1 == null) {
+            throw new NullPointerException("DcMotorEx named 'Launch1' not found in hardwareMap");
+        }
+        global.Launch2 = hardwareMap.get(DcMotorEx.class, "Launch2");
+        if (global.Launch2 == null) {
+            throw new NullPointerException("DcMotorEx named 'Launch2' not found in hardwareMap");
         }
         global.Transfer = hardwareMap.get(DcMotorEx.class, "Transfer");
         if (global.Transfer == null) {
             throw new NullPointerException("DcMotorEx named 'Transfer' not found in hardwareMap");
+        }
+        global.Rflower = hardwareMap.get(Servo.class, "Rflower");
+        if (global.Rflower == null) {
+            throw new NullPointerException("Servo named 'Rflower' not found in hardwareMap");
+        }
+        global.Lflower = hardwareMap.get(Servo.class, "Lflower");
+        if (global.Lflower == null) {
+            throw new NullPointerException("Servo named 'Lflower' not found in hardwareMap");
         }
     }
 }
