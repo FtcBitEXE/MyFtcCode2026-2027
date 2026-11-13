@@ -7,13 +7,18 @@
 //      |   | \   \   |   | \   \  |---    ---|  /          |  |   |   |   |  |---|  |   | \   \       |   -------|  |---|  \ '----' /
 //      |---|  \---\  |---|  \---\ |----------|  |---------/   |---|   |---|  |---|  |---|  \---\      |----------|  |---|   \------/
 //      FTC Season 2 (for me) :) :) :)
-package org.firstinspires.ftc.teamcode.KrishTestCode;
+package org.firstinspires.ftc.teamcode.Auto;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Devices.DriveTrain;
 import org.firstinspires.ftc.teamcode.Global;
+
+
+//This program MAY OR MAY NOT be obsolete later this season...
+//*quietly foreshadowing the rise of PedroPathing in Cyberbyte*
+
 
 //Makes program show up in the Autonomous tab on the Driver Hub
 @Autonomous
@@ -57,6 +62,7 @@ public class NonagonAuto extends LinearOpMode {
             robot.turn(0.6, -565);
             robot.sleeep(500);
             robot.flower(1);
+            global.Intake.setPower(0.8);
             robot.sleeep(500);
             //Moves to flower to collect
             robot.forward(0.6, 1000);
@@ -65,6 +71,7 @@ public class NonagonAuto extends LinearOpMode {
             robot.forward(0.6, -200);
             robot.sleeep(500);
             robot.flower(0);
+            global.Intake.setPower(0);
             robot.sleeep(500);
             //Turns to face Hive
             robot.turn(0.6, 400);

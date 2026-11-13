@@ -189,10 +189,10 @@ public class DriveTrain {
 
         if (gamepad1.right_bumper) {
             global.Rflower.setPosition(1);
-            global.Lflower.setPosition(1);
+            global.Lflower.setPosition(1); //Flower thingymajigy down
         } else {
             global.Rflower.setPosition(0);
-            global.Lflower.setPosition(0);
+            global.Lflower.setPosition(0); //Flower thingymajigy up. On? In? Up? Working.
         }
 
         if (gamepad2.right_bumper && !global.lastLaunch) {
@@ -203,8 +203,10 @@ public class DriveTrain {
         // Set motor power based on the toggle state
         if (global.launcherOn) {
             global.Launch1.setPower(0.8);
+            global.Launch2.setPower(0.8);
         } else {
             global.Launch1.setPower(0);
+            global.Launch2.setPower(0);
         }
     }
 

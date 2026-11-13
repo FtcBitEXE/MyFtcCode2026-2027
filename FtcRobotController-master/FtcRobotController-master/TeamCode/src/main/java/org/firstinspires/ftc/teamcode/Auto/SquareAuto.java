@@ -7,7 +7,7 @@
 //      |   | \   \   |   | \   \  |---    ---|  /          |  |   |   |   |  |---|  |   | \   \       |   -------|  |---|  \ '----' /
 //      |---|  \---\  |---|  \---\ |----------|  |---------/   |---|   |---|  |---|  |---|  \---\      |----------|  |---|   \------/
 //      FTC Season 2 (for me) :) :) :)
-package org.firstinspires.ftc.teamcode.KrishTestCode;
+package org.firstinspires.ftc.teamcode.Auto;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.Devices.DriveTrain;
@@ -41,8 +41,10 @@ public class SquareAuto extends LinearOpMode {
             robot.sleeep(750);
             robot.strafe(1.0, -500);
             robot.sleeep(1000);
+            global.Intake.setPower(0.8);
             robot.forward(0.7, 1400);
-            robot.sleeep(1500);
+            robot.sleeep(2000);
+            global.Intake.setPower(0);
             robot.forward(0.87, -1500);
             robot.sleeep(1500);
             robot.strafe(1.0, -150);
